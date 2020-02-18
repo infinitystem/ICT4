@@ -1,0 +1,259 @@
+
+
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    if (true) {
+        info.changeLifeBy(-1)
+        pause(500)
+    }
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    sprite.destroy(effects.fire, 100)
+    if (true) {
+        info.changeScoreBy(1)
+    }
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    dart = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . b 5 5 b . . .
+        . . . . . . b b b b b b . . . .
+        . . . . . b b 5 5 5 5 5 b . . .
+        . b b b b b 5 5 5 5 5 5 5 b . .
+        . b d 5 b 5 5 5 5 5 5 5 5 b . .
+        . . b 5 5 b 5 d 1 f 5 d 4 f . .
+        . . b d 5 5 b 1 f f 5 4 4 c . .
+        b b d b 5 5 5 d f b 4 4 4 4 b .
+        b d d c d 5 5 b 5 4 4 4 4 4 4 b
+        c d d d c c b 5 5 5 5 5 5 5 b .
+        c b d d d d d 5 5 5 5 5 5 5 b .
+        . c d d d d d d 5 5 5 5 5 d b .
+        . . c b d d d d d 5 5 5 b b . .
+        . . . c c c c c c c c b b . . .
+    `, spaceDuck, 200, 0)
+    animation.runImageAnimation(
+    dart,
+    [img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . b 5 5 b . . .
+        . . . . . . b b b b b b . . . .
+        . . . . . b b 5 5 5 5 5 b . . .
+        . b b b b b 5 5 5 5 5 5 5 b . .
+        . b d 5 b 5 5 5 5 5 5 5 5 b . .
+        . . b 5 5 b 5 d 1 f 5 d 4 f . .
+        . . b d 5 5 b 1 f f 5 4 4 c . .
+        b b d b 5 5 5 d f b 4 4 4 4 b .
+        b d d c d 5 5 b 5 4 4 4 4 4 4 b
+        c d d d c c b 5 5 5 5 5 5 5 b .
+        c b d d d d d 5 5 5 5 5 5 5 b .
+        . c d d d d d d 5 5 5 5 5 d b .
+        . . c b d d d d d 5 5 5 b b . .
+        . . . c c c c c c c c b b . . .
+  `,img`
+        . . . . . . . . . . b 5 b . . .
+        . . . . . . . . . b 5 b . . . .
+        . . . . . . . . . b c . . . . .
+        . . . . . . b b b b b b . . . .
+        . . . . . b b 5 5 5 5 5 b . . .
+        . . . . b b 5 d 1 f 5 5 d f . .
+        . . . . b 5 5 1 f f 5 d 4 c . .
+        . . . . b 5 5 d f b d d 4 4 . .
+        b d d d b b d 5 5 5 4 4 4 4 4 b
+        b b d 5 5 5 b 5 5 4 4 4 4 4 b .
+        b d c 5 5 5 5 d 5 5 5 5 5 b . .
+        c d d c d 5 5 b 5 5 5 5 5 5 b .
+        c b d d c c b 5 5 5 5 5 5 5 b .
+        . c d d d d d d 5 5 5 5 5 d b .
+        . . c b d d d d d 5 5 5 b b . .
+        . . . c c c c c c c c b b . . .
+  `,img`
+        . . . . . . . . . . b 5 b . . .
+        . . . . . . . . . b 5 b . . . .
+        . . . . . . b b b b b b . . . .
+        . . . . . b b 5 5 5 5 5 b . . .
+        . . . . b b 5 d 1 f 5 d 4 c . .
+        . . . . b 5 5 1 f f d d 4 4 4 b
+        . . . . b 5 5 d f b 4 4 4 4 b .
+        . . . b d 5 5 5 5 4 4 4 4 b . .
+        . . b d d 5 5 5 5 5 5 5 5 b . .
+        . b d d d d 5 5 5 5 5 5 5 5 b .
+        b d d d b b b 5 5 5 5 5 5 5 b .
+        c d d b 5 5 d c 5 5 5 5 5 5 b .
+        c b b d 5 d c d 5 5 5 5 5 5 b .
+        . b 5 5 b c d d 5 5 5 5 5 d b .
+        b b c c c d d d d 5 5 5 b b . .
+        . . . c c c c c c c c b b . . .
+  `,img`
+        . . . . . . . . . . b 5 b . . .
+        . . . . . . . . . b 5 b . . . .
+        . . . . . . b b b b b b . . . .
+        . . . . . b b 5 5 5 5 5 b . . .
+        . . . . b b 5 d 1 f 5 d 4 c . .
+        . . . . b 5 5 1 f f d d 4 4 4 b
+        . . . . b 5 5 d f b 4 4 4 4 b .
+        . . . b d 5 5 5 5 4 4 4 4 b . .
+        . b b d d d 5 5 5 5 5 5 5 b . .
+        b d d d b b b 5 5 5 5 5 5 5 b .
+        c d d b 5 5 d c 5 5 5 5 5 5 b .
+        c b b d 5 d c d 5 5 5 5 5 5 b .
+        c b 5 5 b c d d 5 5 5 5 5 5 b .
+        b b c c c d d d 5 5 5 5 5 d b .
+        . . . . c c d d d 5 5 5 b b . .
+        . . . . . . c c c c c b b . . .
+  `,img`
+        . . . . . . . . . . b 5 b . . .
+        . . . . . . . . . b 5 b . . . .
+        . . . . . . b b b b b b . . . .
+        . . . . . b b 5 5 5 5 5 b . . .
+        . . . . b b 5 d 1 f 5 5 d f . .
+        . . . . b 5 5 1 f f 5 d 4 c . .
+        . . . . b 5 5 d f b d d 4 4 . .
+        . b b b d 5 5 5 5 5 4 4 4 4 4 b
+        b d d d b b d 5 5 4 4 4 4 4 b .
+        b b d 5 5 5 b 5 5 5 5 5 5 b . .
+        c d c 5 5 5 5 d 5 5 5 5 5 5 b .
+        c b d c d 5 5 b 5 5 5 5 5 5 b .
+        . c d d c c b d 5 5 5 5 5 d b .
+        . . c b d d d d d 5 5 5 b b . .
+        . . . c c c c c c c c b b . . .
+        . . . . . . . . . . . . . . . .
+  `,img`
+        . . . . . . . . . b 5 b . . . .
+        . . . . . . . . . b 5 b . . . .
+        . . . . . . b b b b b b . . . .
+        . . . . . b b 5 5 5 5 5 b . . .
+        . . . . b b 5 b c 5 5 d 4 c . .
+        . b b b b 5 5 5 b f d d 4 4 4 b
+        . b d 5 b 5 5 b c b 4 4 4 4 b .
+        . . b 5 5 b 5 5 5 4 4 4 4 b . .
+        . . b d 5 5 b 5 5 5 5 5 5 b . .
+        . b d b 5 5 5 d 5 5 5 5 5 5 b .
+        b d d c d 5 5 b 5 5 5 5 5 5 b .
+        c d d d c c b 5 5 5 5 5 5 5 b .
+        c b d d d d d 5 5 5 5 5 5 5 b .
+        . c d d d d d d 5 5 5 5 5 d b .
+        . . c b d d d d d 5 5 5 b b . .
+        . . . c c c c c c c c b b . . .
+    `],
+    500,
+    true
+    )
+    pause(200)
+})
+info.onLifeZero(function () {
+    game.over(false)
+})
+let bogey: Sprite = null
+let invisible_bogey: Sprite = null
+let dart: Sprite = null
+let spaceDuck: Sprite = null
+game.splash("Welcome to space duck.", " Arrow keys to control and space bar to shoot")
+spaceDuck = sprites.create(img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . b 5 5 b . . .
+    . . . . . . b b b b b b . . . .
+    . . . . . b b 5 5 5 5 5 b . . .
+    . b b b b b 5 5 5 5 5 5 5 b . .
+    . b d 5 b 5 5 5 5 5 5 5 5 b . .
+    . . b 5 5 b 5 d 1 f 5 d 4 f . .
+    . . b d 5 5 b 1 f f 5 4 4 c . .
+    b b d b 5 5 5 d f b 4 4 4 4 b .
+    b d d c d 5 5 b 5 4 4 4 4 4 4 b
+    c d d d c c b 5 5 5 5 5 5 5 b .
+    c b d d d d d 5 5 5 5 5 5 5 b .
+    . c d d d d d d 5 5 5 5 5 d b .
+    . . c b d d d d d 5 5 5 b b . .
+    . . . c c c c c c c c b b . . .
+`, SpriteKind.Player)
+spaceDuck.setFlag(SpriteFlag.StayInScreen, true)
+info.setLife(3)
+controller.moveSprite(spaceDuck, 200, 200)
+game.onUpdateInterval(500, function () {
+    if (info.score() > 15) {
+        invisible_bogey = sprites.create(img`
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . f . . .
+            . . . . . . . . . . . f f . . .
+            . . . . . . . . 2 . f f f . . .
+            . . . . . . . 4 2 f f f f . . .
+            . . . . . . 5 4 2 f f f f . . .
+            . . . . . 8 5 4 2 f f f f . . .
+            . . . . . 8 5 4 2 f f f f . . .
+            . . . . . . 5 4 2 f f f f . . .
+            . . . . . . . 4 2 f f f f . . .
+            . . . . . . . . 2 . f f f . . .
+            . . . . . . . . . . . f f . . .
+            . . . . . . . . . . . . f . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+        `, SpriteKind.Enemy)
+        invisible_bogey.setPosition(180, Math.randomRange(8, 112))
+        invisible_bogey.setVelocity(-200, 0)
+    }
+    if (info.score() > 30) {
+        invisible_bogey.setVelocity(-400, 0)
+    }
+})
+game.onUpdateInterval(500, function () {
+    bogey = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . 1 . .
+        . . . . . . . . . . . . 1 1 . .
+        . . . . . . . . . . . 1 1 1 . .
+        . . . . . . . . . . 1 1 1 1 . .
+        . . . . . . . . . 2 1 1 1 1 . .
+        . . . . . . . . 4 2 1 1 1 1 . .
+        . . . . . . . 5 4 2 1 1 1 1 . .
+        . . . . . . . 5 4 2 1 1 1 1 . .
+        . . . . . . . . 4 2 1 1 1 1 . .
+        . . . . . . . . . 2 1 1 1 1 . .
+        . . . . . . . . . . 1 1 1 1 . .
+        . . . . . . . . . . . 1 1 1 . .
+        . . . . . . . . . . . . 1 1 . .
+        . . . . . . . . . . . . . 1 . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.Enemy)
+    bogey.setVelocity(-180, 0)
+    bogey.setPosition(180, Math.randomRange(8, 112))
+    if (info.score() > 10) {
+        bogey.setVelocity(-150, 0)
+    }
+    if (info.score() > 20) {
+        bogey.setVelocity(-200, 0)
+    }
+    if (info.score() > 30) {
+        bogey.setVelocity(-200, 25)
+    }
+    if (info.score() > 40) {
+        bogey.setVelocity(-300, 0)
+    }
+})
+game.onUpdateInterval(500, function () {
+    if (info.score() > 35) {
+        invisible_bogey = sprites.create(img`
+            . . . . . . . . . . . . . . . 2
+            . . . . . . . . . . . . . 2 2 2
+            . . . . . . . . . . . 2 2 2 2 2
+            . . . . . . . . . 2 2 2 2 2 2 2
+            . . . . . . . 2 2 2 2 2 2 2 2 2
+            . . . . . 2 2 2 2 2 2 2 2 2 2 2
+            . . . 2 2 2 2 2 2 2 2 2 2 2 2 2
+            . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+            . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+            . . . 2 2 2 2 2 2 2 2 2 2 2 2 2
+            . . . . . 2 2 2 2 2 2 2 2 2 2 2
+            . . . . . . . 2 2 2 2 2 2 2 2 2
+            . . . . . . . . . 2 2 2 2 2 2 2
+            . . . . . . . . . . . 2 2 2 2 2
+            . . . . . . . . . . . . . 2 2 2
+            . . . . . . . . . . . . . . . 2
+        `, SpriteKind.Enemy)
+        invisible_bogey.setPosition(180, Math.randomRange(8, 112))
+        invisible_bogey.setVelocity(-200, 0)
+    }
+})
+
