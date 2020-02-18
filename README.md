@@ -8,7 +8,7 @@ Important, please send JavaScript code **ONLY** to Owen Quilty on QUI0012@willih
 
 **Instructions** :
 
-**1.** Email subject: JavaScript\_YOURNAME, SURNAME\_CLASS (ICT2 or ICT4) - for example: JavaScript\_Paulo da Silva\_ICT4
+**1.** Email subject: JavaScript\_YOURNAME SURNAME\_CLASS (ICT2 or ICT4) - for example: JavaScript\_Paulo da Silva\_ICT4
 
 **2.** Copy your JavaScript code and paste into the email (text only)
 
