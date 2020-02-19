@@ -1,0 +1,1786 @@
+
+
+enum ActionKind {
+    Walking,
+    Idle,
+    Jumping,
+    walkingup,
+    idlebackofhead,
+    leftrun,
+    rightrun,
+    runidle,
+    leftidle,
+    Civ,
+    help
+}
+namespace SpriteKind {
+    export const Save = SpriteKind.create()
+    export const Person = SpriteKind.create()
+    export const Saved = SpriteKind.create()
+    export const keyY = SpriteKind.create()
+    export const keyP = SpriteKind.create()
+    export const keyR = SpriteKind.create()
+    export const keyB = SpriteKind.create()
+    export const keyG = SpriteKind.create()
+    export const Rock = SpriteKind.create()
+    export const ENemy1 = SpriteKind.create()
+    export const bossfight = SpriteKind.create()
+}
+namespace myTiles {
+    //% blockIdentity=images._tile
+    export const tile0 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    //% blockIdentity=images._tile
+    export const tile1 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    //% blockIdentity=images._tile
+    export const tile2 = img`
+        c c c c c c c b c c c c c c c c
+        c c b c c c c c c c c c c c b c
+        c c c c c c c 5 5 5 c c c c c c
+        b c c c c 5 5 5 3 5 5 c b c c c
+        c c b c 5 3 3 3 3 3 3 5 c c c c
+        c c c 5 5 3 3 3 3 3 3 5 c c c c
+        c c c 5 c 3 f 3 3 f 3 5 c c c c
+        c c c c c 3 3 3 3 3 3 5 5 c c c
+        c c c c c 3 3 3 3 3 3 c 5 c c c
+        c c b c c 3 f f f f 3 c c c c c
+        c c c c c 3 3 3 3 3 3 c c c c c
+        c c c c c c c c f c c c c c c c
+        c c c c c c c f f f c c c b c c
+        c c c c c c b c f c c c c c c c
+        c b c c c c c f c f b c c c b c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile3 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c b c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile4 = img`
+        c c c c c c c c c c c c c c c c
+        c b c c c c c c c c c c c c c c
+        c c c c c c b c c c c c b c c c
+        c c c c c c c c c c c c c c c c
+        c c b c c 5 5 5 5 5 c c c c c c
+        c c c c c 5 3 3 3 5 c c c c c c
+        c c c c 5 5 f 3 f 5 5 c c c c c
+        c c c c c c 3 3 3 c c c c b c c
+        c c b c c f f f f f c c c c c c
+        c c c c c c c f c c c c c c c c
+        c c c c c c f f f b c c c c c c
+        c c c c c c f c f c c c c c c c
+        b c c c c c f c f c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c c c c c b c c c c c b c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile5 = img`
+        b c c c c c c c c c c c c c c c
+        c c 7 7 c c b c c c c c c c c c
+        c c 7 c c c c c c 7 c c 7 c b c
+        c c 7 7 c 7 c 7 c c b 7 7 7 c c
+        c c 7 c c c 7 c c 7 c c 7 c c c
+        c c 7 7 c 7 c 7 c 7 7 c 7 7 c c
+        c c c c c c c c c c c c c c c c
+        c c c 7 7 7 7 7 7 7 7 7 7 c c c
+        c b c c c c c c c c c c c c c c
+        c c c c c c c b c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c b c c c c c c c c c c c
+        c c c c c c c c c c c c c b c c
+        c c c c c c c c b c c c c c c c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile6 = img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 9 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 9 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 9 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 9 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 9 8 8 8 8 8 8 8 8 8 8
+        8 8 8 9 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+    `
+    //% blockIdentity=images._tile
+    export const tile7 = img`
+        7 5 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5
+        7 f f f f f f f f f f f f f f 7
+        7 f e e e e e e e e e e e e f 7
+        7 f e e e e e e e e e e e e f 7
+        7 f e 6 e 6 e e 6 e e 6 e 6 f 7
+        7 f 6 e e e e 6 6 6 e e 6 e f 7
+        7 f 6 e e 6 e e 6 e e e 6 e f 7
+        7 f e 6 e 6 6 e 6 6 e e 6 e f 7
+        7 f e e e e e e e e e e e e f 7
+        7 f f f f f f f f f f f f f f 7
+        7 7 7 7 7 7 7 7 f 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 f 7 7 7 7 7 7 7
+        7 7 5 7 5 7 7 7 f 7 7 7 7 7 7 7
+        7 5 7 7 7 7 7 7 f 7 7 7 5 5 5 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+    `
+    //% blockIdentity=images._tile
+    export const tile8 = img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+    `
+    //% blockIdentity=images._tile
+    export const tile9 = img`
+        6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+        6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+        6 6 f f f f f f f f f f f f 6 6
+        6 6 f 1 1 1 1 2 2 1 1 1 1 f 6 6
+        6 6 f 1 1 1 2 1 1 2 1 1 1 f 6 6
+        6 6 f 1 1 2 1 1 2 1 2 1 1 f 6 6
+        6 6 f 1 1 2 1 2 1 1 2 1 1 f 6 6
+        6 6 f 1 1 1 2 1 1 2 1 1 1 f 6 6
+        6 6 f 1 1 1 1 2 2 1 1 1 1 f 6 6
+        6 6 f f f f f f f f f f f f 6 6
+        6 6 6 6 6 6 6 6 f 6 6 6 6 6 6 6
+        6 6 6 6 6 6 6 6 f 6 6 6 6 6 6 6
+        6 6 6 6 6 6 6 6 f 6 6 6 6 6 6 6
+        6 6 6 6 6 6 6 6 f 6 6 6 6 6 6 6
+        6 6 6 6 6 6 6 6 f 6 6 6 6 6 6 6
+        6 6 6 6 6 6 6 6 f 6 6 6 6 6 6 6
+    `
+    //% blockIdentity=images._tile
+    export const tile10 = img`
+        b c c c c c c c c c c c c c c c
+        c c 7 7 c c b c c c c c c c c c
+        c c 7 c c c c c c 7 c c 7 c b c
+        c c 7 7 c 7 c 7 c c b 7 7 7 c c
+        c c 7 c c c 7 c c 7 c c 7 c c c
+        c c 7 7 c 7 c 7 c 7 7 c 7 7 c c
+        c c c c c c c c c c c c c c c c
+        c c c 7 7 7 7 7 7 7 7 7 7 c c c
+        c b c c c c c c c c c c c c c c
+        c c c c c c c b c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c b c c c c c c c c c c c
+        b c c c c c c c c c c c c b c c
+        c c c c c c c c b c c c c c c c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile11 = img`
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f e f f f f f f f f e f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f e f f f f f
+        f f f f f f f f f f f f f f f f
+        f e f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+    `
+    //% blockIdentity=images._tile
+    export const tile12 = img`
+        5 5 5 5 5 5 4 4 2 4 5 5 5 5 5 5
+        4 5 5 5 5 5 5 4 2 4 5 5 4 4 5 5
+        4 4 4 5 5 5 5 4 2 4 5 5 4 4 4 5
+        2 2 4 4 5 5 5 4 2 4 5 5 4 2 4 5
+        4 2 2 4 5 5 4 4 2 4 5 5 4 2 4 5
+        4 4 2 4 4 4 4 4 2 4 5 5 4 2 4 5
+        5 4 2 2 2 2 2 2 2 4 5 5 5 4 5 5
+        5 5 4 2 2 4 4 2 2 2 4 5 5 5 5 5
+        5 5 5 4 2 2 4 2 4 2 2 4 4 5 5 4
+        5 5 5 4 4 2 2 2 4 4 2 2 2 4 4 4
+        5 5 4 4 4 2 2 2 4 4 4 4 2 2 2 2
+        4 4 4 2 2 4 4 2 4 5 5 4 4 4 4 4
+        4 4 2 2 4 4 4 2 2 4 4 5 5 5 5 5
+        2 2 4 4 4 5 4 4 2 2 4 4 5 5 5 5
+        2 4 4 5 5 5 5 5 4 2 4 5 5 5 5 5
+        4 4 5 5 5 5 5 5 5 2 4 4 5 5 5 5
+    `
+    //% blockIdentity=images._tile
+    export const tile13 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c b b c c c b c c c c c c b c c
+        c c b c c c c c c c c c c c c c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c b c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile14 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c b b c c c b c c c c c c b c c
+        c c b c c c c c c c c c c c c c
+        c c b b c c c c c c c c c c c c
+        c c c c c c c c b c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile15 = img`
+        c c c c c c c c c c c c c c c c
+        c c b c c c c c c c c c c c c c
+        c c c b c c b c c c c c c b c c
+        c c b c c c c c c c c c c c c c
+        c c c b c c c c c c c c c c c c
+        c c b c c c c c b c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile16 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c b c b c b c c c c c c b c c
+        c c b b b c c c c c c c c c c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c b c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile17 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c b c c b c c c c c c b c c
+        c c b c c c c c c c c c c c c c
+        c c b b c c c c c c c c c c c c
+        c c c b c c c c b c c c c c c c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile18 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c b c c c b c c c c c c b c c
+        c c b b c c c c c c c c c c c c
+        c c b c b c c c c c c c c c c c
+        c c c b c c c c b c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile19 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c b b c c c b c c c c c c b c c
+        c c b c c c c c c c c c c c c c
+        c b b b c c c c c c c c c c c c
+        c c b c c c c c b c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c b c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c b c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile20 = img`
+        5 5 5 5 5 5 5 5 5 4 4 4 4 2 4 4
+        5 5 5 4 4 4 4 4 5 5 4 4 4 2 2 4
+        5 4 5 5 4 2 2 2 2 2 4 4 2 2 2 4
+        5 4 4 5 5 f 2 2 2 2 4 4 2 2 2 4
+        5 4 4 4 f 5 4 4 2 2 4 4 2 2 4 4
+        5 4 2 2 f 5 5 4 4 4 5 5 5 5 4 4
+        5 2 2 2 4 f 5 5 5 5 4 4 4 5 5 4
+        4 2 2 4 5 5 5 5 4 f 4 2 2 4 4 4
+        4 2 2 4 5 5 4 5 5 4 f 2 2 2 4 4
+        5 5 4 4 4 4 4 4 5 4 f 2 2 2 2 4
+        5 4 2 2 2 2 2 4 5 f 2 2 2 2 2 5
+        5 2 2 2 2 2 2 4 5 4 4 2 2 4 4 5
+        5 4 2 2 2 2 f 4 5 5 4 2 4 4 4 5
+        5 5 4 4 2 f 4 4 5 5 5 4 4 4 5 5
+        4 5 5 4 4 f 5 5 4 4 5 5 5 5 5 4
+        4 4 5 5 5 5 f 4 4 4 4 4 4 4 4 4
+    `
+    //% blockIdentity=images._tile
+    export const tile21 = img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+    `
+    //% blockIdentity=images._tile
+    export const tile22 = img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+    `
+    //% blockIdentity=images._tile
+    export const tile23 = img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+    `
+    //% blockIdentity=images._tile
+    export const tile24 = img`
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+        a a a a a a a a a a a a a a a a
+    `
+    //% blockIdentity=images._tile
+    export const tile25 = img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+    `
+    //% blockIdentity=images._tile
+    export const tile26 = img`
+        b c c c c c c c c c c c c c c c
+        c 2 7 7 c c b c c c c c c c 2 c
+        c c 2 c c c c c c 7 c c 7 2 b c
+        c c 7 2 c 7 c 7 c c b 7 2 7 c c
+        c c 7 c 2 c 7 c c 7 c 2 7 c c c
+        c c 7 7 c 2 c 7 c 7 2 c 7 7 c c
+        c c c c c c 2 c c 2 c c c c c c
+        c c c 7 7 7 7 2 2 7 7 7 7 c c c
+        c b c c c c c 2 2 c c c c c c c
+        c c c c c c 2 b c 2 c c c c c c
+        c c c c c 2 c c c c 2 c c c c c
+        c c c c 2 c c c c c c 2 c c c c
+        c c c 2 c c c c c c c c 2 b c c
+        c c 2 c c c c c b c c c c 2 c c
+        c 2 b c c c c c c c c c c c 2 c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile27 = img`
+        4 4 4 4 5 5 4 4 2 4 5 5 5 5 5 5
+        4 5 5 5 5 5 5 4 2 4 5 5 4 4 5 5
+        4 4 4 5 5 5 5 4 2 4 5 5 4 4 4 5
+        2 2 4 4 5 5 5 4 2 4 5 5 4 2 4 5
+        4 2 2 4 5 5 4 4 2 4 5 5 4 2 4 5
+        4 4 2 4 4 4 4 4 2 4 5 5 4 2 4 5
+        5 4 2 2 2 2 2 2 2 4 5 5 5 4 5 5
+        5 5 4 2 2 4 4 2 2 2 4 5 5 5 5 5
+        5 5 5 4 2 2 4 2 4 2 2 4 4 5 5 4
+        5 5 5 4 4 2 2 2 4 4 2 2 2 4 4 4
+        5 5 4 4 4 2 2 2 4 4 4 4 2 2 2 2
+        4 4 4 2 2 4 4 2 4 5 5 4 4 4 4 4
+        4 4 2 2 4 4 4 2 2 4 4 5 5 5 5 5
+        2 2 4 4 4 5 4 4 2 2 4 4 5 5 5 5
+        2 4 4 5 5 5 5 5 4 2 4 5 5 5 5 5
+        4 4 5 5 5 5 5 5 5 2 4 4 5 5 5 5
+    `
+    //% blockIdentity=images._tile
+    export const tile28 = img`
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b 5 5 5 5 5 5 5 b b b b
+        b b b b 5 5 5 5 5 5 5 5 5 b b b
+        b b b 5 5 5 5 5 5 5 5 5 5 5 b b
+        b b b 5 5 5 5 5 5 5 5 5 5 5 b b
+        b b b 5 5 5 5 5 5 5 5 5 5 5 b b
+        b b b 5 5 5 5 5 5 5 5 5 5 5 b b
+        b b b 5 5 5 5 5 5 5 5 5 5 5 b b
+        b b b 5 5 5 5 5 5 5 5 5 5 5 b b
+        b b b 5 5 5 5 5 5 5 5 5 5 5 b b
+        b b b b 5 5 5 5 5 5 5 5 5 b b b
+        b b b b b 5 5 5 5 5 5 5 b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b b b b b b b b b b b b
+    `
+    //% blockIdentity=images._tile
+    export const tile29 = img`
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b 9 9 9 9 9 9 9 b b b b
+        b b b b 9 9 9 9 9 9 9 9 9 b b b
+        b b b 9 9 9 9 9 9 9 9 9 9 9 b b
+        b b b 9 9 9 9 9 9 9 9 9 9 9 b b
+        b b b 9 9 9 9 9 9 9 9 9 9 9 b b
+        b b b 9 9 9 9 9 9 9 9 9 9 9 b b
+        b b b 9 9 9 9 9 9 9 9 9 9 9 b b
+        b b b 9 9 9 9 9 9 9 9 9 9 9 b b
+        b b b 9 9 9 9 9 9 9 9 9 9 9 b b
+        b b b b 9 9 9 9 9 9 9 9 9 b b b
+        b b b b b 9 9 9 9 9 9 9 b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b b b b b b b b b b b b
+    `
+    //% blockIdentity=images._tile
+    export const tile30 = img`
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b 2 2 2 2 2 2 2 b b b b
+        b b b b 2 2 2 2 2 2 2 2 2 b b b
+        b b b 2 2 2 2 2 2 2 2 2 2 2 b b
+        b b b 2 2 2 2 2 2 2 2 2 2 2 b b
+        b b b 2 2 2 2 2 2 2 2 2 2 2 b b
+        b b b 2 2 2 2 2 2 2 2 2 2 2 b b
+        b b b 2 2 2 2 2 2 2 2 2 2 2 b b
+        b b b 2 2 2 2 2 2 2 2 2 2 2 b b
+        b b b 2 2 2 2 2 2 2 2 2 2 2 b b
+        b b b b 2 2 2 2 2 2 2 2 2 b b b
+        b b b b b 2 2 2 2 2 2 2 b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b b b b b b b b b b b b
+    `
+    //% blockIdentity=images._tile
+    export const tile31 = img`
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b 7 7 7 7 7 7 7 b b b b
+        b b b b 7 7 7 7 7 7 7 7 7 b b b
+        b b b 7 7 7 7 7 7 7 7 7 7 7 b b
+        b b b 7 7 7 7 7 7 7 7 7 7 7 b b
+        b b b 7 7 7 7 7 7 7 7 7 7 7 b b
+        b b b 7 7 7 7 7 7 7 7 7 7 7 b b
+        b b b 7 7 7 7 7 7 7 7 7 7 7 b b
+        b b b 7 7 7 7 7 7 7 7 7 7 7 b b
+        b b b 7 7 7 7 7 7 7 7 7 7 7 b b
+        b b b b 7 7 7 7 7 7 7 7 7 b b b
+        b b b b b 7 7 7 7 7 7 7 b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b b b b b b b b b b b b
+    `
+    //% blockIdentity=images._tile
+    export const tile32 = img`
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b a a a a a a a b b b b
+        b b b b a a a a a a a a a b b b
+        b b b a a a a a a a a a a a b b
+        b b b a a a a a a a a a a a b b
+        b b b a a a a a a a a a a a b b
+        b b b a a a a a a a a a a a b b
+        b b b a a a a a a a a a a a b b
+        b b b a a a a a a a a a a a b b
+        b b b a a a a a a a a a a a b b
+        b b b b a a a a a a a a a b b b
+        b b b b b a a a a a a a b b b b
+        b b f b b b b b b b b b b b f b
+        b b b b b b b b b b b b b b b b
+    `
+    //% blockIdentity=images._tile
+    export const tile33 = img`
+        c b c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c b c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c b c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c b c c c c c c b c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c b c c c c c c c c c c c c c
+        c c c c c c c c c c b c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile34 = img`
+        e f f f f f f f f f f f f f f e
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+    `
+    //% blockIdentity=images._tile
+    export const tile35 = img`
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b 7 7 b b b b b b 7 b 7 b 7 b
+        b b 7 b b b 7 b b 7 b b b 7 b b
+        b b 7 7 b 7 b 7 b b 7 b b 7 b b
+        b b 7 b b 7 7 7 b b 7 b b 7 b b
+        b b 7 7 b 7 b 7 b 7 b b b 7 b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+    `
+    //% blockIdentity=images._tile
+    export const tile36 = img`
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b 7 7 b b b b b b b
+        b b 7 b 7 b b 7 b b b 7 7 b b b
+        b 7 b 7 b 7 b 7 7 b b 7 b 7 b b
+        b 7 b 7 b 7 b 7 b b b 7 b 7 b b
+        b b b b b b b 7 7 b b 7 7 b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+    `
+    //% blockIdentity=images._tile
+    export const tile37 = img`
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b 7 b 7 b b b b b b b b b b b b
+        b 7 b 7 b b 7 b b 7 7 b b 7 7 b
+        b 7 7 7 b 7 b 7 b 7 b 7 b 7 b 7
+        b 7 b 7 b 7 7 7 b 7 7 b b 7 b 7
+        b 7 b 7 b 7 b 7 b 7 b 7 b 7 7 b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+        b b b b b b b b b b b b b b b b
+    `
+    //% blockIdentity=images._tile
+    export const tile38 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c 7 c 7 c 7 c 7 7 c c 7 c 7 7 7
+        c 7 c 7 c 7 c 7 7 c c 7 c c 7 c
+        c 7 7 7 c 7 c 7 c 7 c 7 c c 7 c
+        c 7 c 7 c 7 c 7 c 7 c 7 c c 7 c
+        c 7 c 7 c 7 c 7 c c 7 c c c 7 c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile39 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c 3 3 c c b c c c c c 3 3 c c
+        c 3 2 2 3 c c c c c c 3 d d 3 c
+        c 3 2 2 2 3 c c c c 3 2 2 d 3 c
+        c 3 2 2 2 2 3 c b 3 2 2 2 d 3 c
+        c 3 2 2 2 2 2 3 3 2 2 2 2 2 3 c
+        c c 3 2 2 2 2 2 2 2 2 2 2 3 c c
+        c c 3 2 2 2 2 2 2 2 2 2 2 3 c c
+        c c 3 2 2 2 2 2 2 2 2 2 2 3 c c
+        c c c 3 d 2 2 2 2 2 2 2 3 c c c
+        c c c c 3 d 2 2 2 2 2 3 c c c c
+        c c c c c 3 d 2 2 2 3 c c c b c
+        c c b c c 3 d 2 2 2 3 c c c c c
+        c c c c c c 3 2 2 3 b c c c c c
+        c c c c c c c 3 3 c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile40 = img`
+        c c c c c c c c c c c c c c c c
+        c c c c c c c c c c c c c c c c
+        c c 3 3 c c b c c c c c 3 3 c c
+        c 3 2 2 3 c c c c c c 3 d d 3 c
+        c 3 2 2 2 3 c c c c 3 2 2 d 3 c
+        c 3 2 2 2 2 3 c b f 2 2 2 d 3 c
+        c 3 2 2 2 2 2 3 3 f 2 2 2 2 3 c
+        c c 3 2 2 2 2 2 f 2 2 2 2 3 c c
+        c c 3 2 2 2 2 f 2 2 2 2 2 3 c c
+        c c 3 2 2 2 f 2 2 2 2 2 2 3 c c
+        c c c 3 d 2 2 f 2 2 2 2 3 c c c
+        c c c c 3 d 2 f f 2 2 3 c c c c
+        c c c c c 3 d 2 f 2 3 c c c b c
+        c c b c c 3 d f f f 3 c c c c c
+        c c c c c c f f 2 3 b c c c c c
+        c c c c c c c 3 3 c c c c c c c
+    `
+    //% blockIdentity=images._tile
+    export const tile41 = img`
+        5 5 5 5 5 5 5 5 5 4 4 4 4 2 4 4
+        5 5 5 4 4 4 4 4 5 5 4 4 4 2 2 4
+        5 4 5 5 4 2 2 2 2 2 4 4 2 2 2 4
+        5 4 4 5 5 5 2 2 2 2 4 4 2 2 2 4
+        5 4 4 4 4 5 4 4 2 2 4 4 2 2 4 4
+        5 4 2 2 4 5 5 4 4 4 5 5 5 5 4 4
+        5 2 2 2 4 4 5 5 5 5 4 4 4 5 5 4
+        4 2 2 4 5 5 5 5 4 4 4 2 2 4 4 4
+        4 2 2 4 5 5 4 5 5 4 2 2 2 2 4 4
+        5 5 4 4 4 4 4 4 5 4 2 2 2 2 2 4
+        5 4 2 2 2 2 2 4 5 4 2 2 2 2 2 5
+        5 2 2 2 2 2 2 4 5 4 4 2 2 4 4 5
+        5 4 2 2 2 2 2 4 5 5 4 2 4 4 4 5
+        5 5 4 4 2 2 4 4 5 5 5 4 4 4 5 5
+        4 5 5 4 4 4 5 5 4 4 5 5 5 5 5 4
+        4 4 5 5 5 5 5 4 4 4 4 4 4 4 4 4
+    `
+}
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles10, function (sprite, location) {
+    music.jumpDown.play()
+    mySprite.setPosition(143, 120)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010000e1f0e0e3f3f3f3f0e0e0e0e0e0e0e0e0e050e050a0e3f0e050505050505050e0e0505050e050e0e0e0e050e0e0e050e0e0505050e050e0e0e0e050e050e050e0e050e0e0e050e0e0e0e050e0505050e0e110e050505053c3c3c050e050e050e0e0505050e0e053c1a1b053c050e050e0e0e0e0e0505053c1c1d053c050e050e0e050505050e0e3c0505050e050e050e0e050e0e0e0e05050505050e050e050e0e050e0e05050505050e0e0e050e050e0e050e0e050e0e0e0e0e0e0e050e050e0e050e0505050505050d0e05050e050e0e050e0e0e0e0e0e0e0e0e050e0e050e0e05050505050505050505050e05050e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,sprites.dungeon.darkGroundNorthWest0,sprites.dungeon.darkGroundNorth,sprites.dungeon.darkGroundNorthEast0,sprites.dungeon.darkGroundEast,sprites.dungeon.darkGroundCenter,sprites.dungeon.darkGroundWest,myTiles.tile1,sprites.dungeon.darkGroundSouthWest0,sprites.dungeon.darkGroundSouthEast0,sprites.dungeon.chestClosed,sprites.dungeon.darkGroundSouth,sprites.dungeon.floorLight0,sprites.dungeon.chestOpen,sprites.dungeon.hazardLava1,sprites.dungeon.collectibleInsignia,myTiles.tile2,myTiles.tile3,sprites.builtin.forestTiles0,sprites.dungeon.hazardLava0,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,sprites.builtin.forestTiles5,sprites.builtin.forestTiles7,sprites.builtin.forestTiles13,sprites.builtin.forestTiles15,myTiles.tile10,sprites.dungeon.stairLarge,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,sprites.builtin.brick,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    mySprite.say("I need to find the treasure before the lava rises!", 5000)
+    info.startCountdown(60)
+    Civilian.destroy(effects.spray, 0)
+    Princess = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 5 5 5 5 5 . . . . . .
+        . . . . . 5 3 3 3 5 . . . . . .
+        . . . . 5 5 f 3 f 5 5 . . . . .
+        . . . . . . 3 3 3 . . . . . . .
+        . . . . . f f f f f . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.Save)
+    Princess.setPosition(24, 30)
+    Princess.say("Help!", 1000000000000000000)
+    animation.runImageAnimation(
+    Princess,
+    [img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 5 5 5 5 5 . . . . . .
+        . . . . . 5 3 3 3 5 . . . . . .
+        . . . . 5 5 f 3 f 5 5 . . . . .
+        . . . . . . 3 3 3 . . . . . . .
+        . . . . . f f f f f . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+  `,img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 5 . 5 5 5 5 5 . 5 . . . .
+        . . . . 5 5 f 3 f 5 5 . . . . .
+        . . . . . . f 3 f . . . . . . .
+        . . . . f . 3 3 3 . f . . . . .
+        . . . . . f f f f f . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `],
+    350,
+    true
+    )
+})
+controller.up.onEvent(ControllerButtonEvent.Released, function () {
+    animation.setAction(mySprite, ActionKind.idlebackofhead)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile38, function (sprite, location) {
+    music.baDing.play()
+    scene.cameraShake(4, 500)
+    mySprite.say("Look at the lava closely, is anything out of place?", 5000)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile18, function (sprite, location) {
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(200, 61)
+    music.baDing.play()
+    mySprite.say("I need to destroy the heart to hit the button!", 5000)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010001d1d1d1d1b1b1b1b1b1d1b1b1b1b1b1b1d2b1b1d1b1b1b1d1b1d1b1b1b1b1b1b1d1d1b1d1b1b1b1d1b1d1b1b1b1b1b1b1d1d1b1b1b1b1b1b1b1d1b1b1b1b1b1b1d1d1b1b1b1d1b1b1b1d1b1d1b1b1b1b1d1d1d1d1d1d1d1b1b1d1b1b1b1b1b1a1d1d1d1b1b1b1b1b1b1d1b1b1b1b1b1b1d1d1d1b1b1b1b1b1d1d1b1b1b1b1b1b1b1b1d1b1b1d1b1b1d1b1b1b1b1b1d1b231b1d1b1b1b1b1d1d1b1b1b1b1b1b1b1b1b1d1b1b1b1b1b1b1b1b1b1b1b1b1b1d1d1d1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1d1b1b1b1b1b1b1b1b1b1b1b1d1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1d1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1d1b1b`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,sprites.dungeon.darkGroundCenter,sprites.dungeon.hazardLava0,sprites.builtin.brick,myTiles.tile27,sprites.dungeon.buttonOrange,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    info.setLife(20)
+    info.startCountdown(180)
+    boss = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . 5 5 5 5 5 5 . . . . .
+        . . . . 5 4 4 4 4 4 4 5 . . . .
+        . . . 5 4 4 2 2 2 2 4 4 5 . . .
+        . . 5 4 4 2 2 2 2 2 2 4 4 5 . .
+        . 5 4 4 2 2 2 2 2 2 2 2 4 4 5 .
+        . 5 4 2 2 f 2 2 2 2 f 2 2 4 5 .
+        . 5 4 2 2 f f 2 2 f f 2 2 4 5 .
+        . 5 4 2 2 2 2 2 2 2 2 2 2 4 5 .
+        . 5 4 4 2 2 f 2 2 f 2 2 4 4 5 .
+        . . 5 4 4 2 f f f f 2 4 4 5 . .
+        . . . 5 4 4 2 2 2 2 4 4 5 . . .
+        . . . . 5 4 4 2 2 4 4 5 . . . .
+        . . . . . 5 4 2 2 4 5 . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.bossfight)
+    boss2 = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . 5 5 5 5 5 5 . . . . .
+        . . . . 5 4 4 4 4 4 4 5 . . . .
+        . . . 5 4 4 2 2 2 2 4 4 5 . . .
+        . . 5 4 4 2 2 2 2 2 2 4 4 5 . .
+        . 5 4 4 2 2 2 2 2 2 2 2 4 4 5 .
+        . 5 4 2 2 f 2 2 2 2 f 2 2 4 5 .
+        . 5 4 2 2 f f 2 2 f f 2 2 4 5 .
+        . 5 4 2 2 2 2 2 2 2 2 2 2 4 5 .
+        . 5 4 4 2 2 f 2 2 f 2 2 4 4 5 .
+        . . 5 4 4 2 f f f f 2 4 4 5 . .
+        . . . 5 4 4 2 2 2 2 4 4 5 . . .
+        . . . . 5 4 4 2 2 4 4 5 . . . .
+        . . . . . 5 4 2 2 4 5 . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.bossfight)
+    boss3 = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . 5 5 5 5 5 5 . . . . .
+        . . . . 5 4 4 4 4 4 4 5 . . . .
+        . . . 5 4 4 2 2 2 2 4 4 5 . . .
+        . . 5 4 4 2 2 2 2 2 2 4 4 5 . .
+        . 5 4 4 2 2 2 2 2 2 2 2 4 4 5 .
+        . 5 4 2 2 f 2 2 2 2 f 2 2 4 5 .
+        . 5 4 2 2 f f 2 2 f f 2 2 4 5 .
+        . 5 4 2 2 2 2 2 2 2 2 2 2 4 5 .
+        . 5 4 4 2 2 f 2 2 f 2 2 4 4 5 .
+        . . 5 4 4 2 f f f f 2 4 4 5 . .
+        . . . 5 4 4 2 2 2 2 4 4 5 . . .
+        . . . . 5 4 4 2 2 4 4 5 . . . .
+        . . . . . 5 4 2 2 4 5 . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.bossfight)
+    boss.setPosition(8, 190)
+    boss2.setPosition(8, 200)
+    boss3.setPosition(8, 195)
+    boss.follow(mySprite, 60)
+    boss2.follow(mySprite, 70)
+    boss3.follow(mySprite, 50)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile30, function (sprite, location) {
+    tiles.setTilemap(tiles.createTilemap(
+            hex`10001000280413150619191919191919191919190404040404040404040404040404041b040404040619191904191906040619190404040406171819041918060406060606060606060a171904190a060404271c170a170a0a1719190419190606060606060606060606040404041906060606062123242526270504040404040404261d06060606060604040404190606060606170a0a0a0a171919041919170a0a0a0a0a170a170a0a18190419180a0a0a170a0a0a170a0a170a1904190a0a0a170a0a060606060606061904190606060606062024040404040404040404040404251e060606060606061904190606060606060a170a0a171718191f19180a170a0a0a`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,sprites.dungeon.darkGroundCenter,sprites.dungeon.collectibleInsignia,sprites.builtin.brick,sprites.dungeon.hazardLava1,myTiles.tile4,sprites.castle.tileGrass2,sprites.dungeon.floorLight0,sprites.castle.rock2,sprites.castle.tilePath5,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,sprites.dungeon.stairLarge,sprites.dungeon.stairSouth,sprites.dungeon.hazardHole,myTiles.tile11,sprites.dungeon.floorLight1,sprites.dungeon.doorLockedSouth,sprites.dungeon.hazardLava0,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    Rkey = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . 2 2 2 . . . .
+        . . . . 2 2 2 2 2 . . . 2 . . .
+        . . . . . 2 . 2 . 2 2 2 . . . .
+        . . . . . 2 . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.keyR)
+    Rkey.setPosition(123, 110)
+    mySprite.setPosition(147, 110)
+    mySprite.say("I got the red key! (You can now walk through the red area after you collect the key)", 13000)
+    scene.cameraShake(8, 500)
+    music.magicWand.play()
+    tiles.setWallAt(tiles.getTileLocation(8, 5), true)
+    tiles.setWallAt(tiles.getTileLocation(8, 9), true)
+    tiles.setWallAt(tiles.getTileLocation(10, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(14, 4), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 13), true)
+    tiles.setWallAt(tiles.getTileLocation(1, 13), true)
+    tiles.setWallAt(tiles.getTileLocation(1, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(2, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(3, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(4, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(5, 7), false)
+    Rock_Enemyy.destroy(effects.disintegrate, 500)
+    Rock_Enemy_1.destroy(effects.disintegrate, 500)
+    Rock_Enemy.destroy(effects.disintegrate, 500)
+    info.stopCountdown()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.keyP, function (sprite, otherSprite) {
+    music.jumpUp.play()
+    scene.cameraShake(3, 500)
+    tiles.setWallAt(tiles.getTileLocation(5, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 4), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(8, 5), false)
+    tiles.setWallAt(tiles.getTileLocation(8, 9), false)
+    tiles.setWallAt(tiles.getTileLocation(10, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(4, 7), false)
+    Pkey.destroy(effects.spray, 500)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.tilePath3, function (sprite, location) {
+    mySprite.say("I have a job to do!", 1000)
+    scene.cameraShake(8, 500)
+    music.powerDown.play()
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.tilePath1, function (sprite, location) {
+    mySprite.say("I have a job to do!", 1000)
+    scene.cameraShake(8, 500)
+    music.powerDown.play()
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile32, function (sprite, location) {
+    tiles.setTilemap(tiles.createTilemap(
+            hex`10001000280413150619191919191919191919190404040404040404040404040404041b040404040619191904191906040619190404040406171819041918060406060606060606060a171904190a060404271c170a170a0a1719190419190606060606060606060606040404041906060606062123242526270504040404040404261d06060606060604040404190606060606170a0a0a0a171919041919170a0a0a0a0a170a170a0a18190419180a0a0a170a0a0a170a0a170a1904190a0a0a170a0a060606060606061904190606060606062024040404040404040404040404251e060606060606061904190606060606060a170a0a171718191f19180a170a0a0a`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,sprites.dungeon.darkGroundCenter,sprites.dungeon.collectibleInsignia,sprites.builtin.brick,sprites.dungeon.hazardLava1,myTiles.tile4,sprites.castle.tileGrass2,sprites.dungeon.floorLight0,sprites.castle.rock2,sprites.castle.tilePath5,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,sprites.dungeon.stairLarge,sprites.dungeon.stairSouth,sprites.dungeon.hazardHole,myTiles.tile11,sprites.dungeon.floorLight1,sprites.dungeon.doorLockedSouth,sprites.dungeon.hazardLava0,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    Pkey = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . a a a . . . .
+        . . . . a a a a a . . . a . . .
+        . . . . . a . a . a a a . . . .
+        . . . . . a . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.keyP)
+    Pkey.setPosition(123, 110)
+    mySprite.setPosition(147, 110)
+    mySprite.say("I got the purple key! (You can now walk through the purple area after you collect the key)", 13000)
+    scene.cameraShake(8, 500)
+    music.magicWand.play()
+    tiles.setWallAt(tiles.getTileLocation(8, 5), true)
+    tiles.setWallAt(tiles.getTileLocation(8, 9), true)
+    tiles.setWallAt(tiles.getTileLocation(10, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(14, 4), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(14, 13), true)
+    tiles.setWallAt(tiles.getTileLocation(1, 13), true)
+    tiles.setWallAt(tiles.getTileLocation(1, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(2, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(3, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(4, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(5, 7), false)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile15, function (sprite, location) {
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(0, 0)
+    music.baDing.play()
+    mySprite.say("--------------What's in here?", 2000)
+    info.startCountdown(60)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010001b1b1b1b1b27272727272727272727271b1b1b1b271b1b1b1b1b2727272727271b1b1b1b1b1b1b1b1b1b1b1b272727271a1b1b1b271b1b1b271b1b1b1b271b271b1b1b1b1b1b271b1b1b1b1b1b271b1b1b1b1b1b271b1b1b1b1b1b1b1b1b1b1b1b1b1b1b271b1b1b1b1b271b1b1b271b1b1b1b27271b1b1b1b1b1b1b1b1b271b271b1b27271b1b1b271b1b1b1b1b271b1b1b1b1b1b1b1b271b1b1b271b1b271b1b1b1b1b1b1b271b1b1b27271b1b271b1b1b1b1b27271b1b1b1b1b1b1b1b271b272727271b1b1b1b1b1b1b1b1b27271b1b1b1b1b1b1b271b1b1b1b2727271b1b1b1b1b1b1b1b1b1b1b1b1b271b221b1b25252525252525252525252725252525`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,sprites.dungeon.darkGroundCenter,sprites.dungeon.hazardLava0,sprites.builtin.brick,myTiles.tile27,sprites.dungeon.buttonOrange,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,sprites.dungeon.darkGroundSouth,sprites.castle.rock0,sprites.castle.rock1,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    Rock_Enemy = sprites.create(img`
+        . . . . . . . . . c c 8 . . . .
+        . . . . . . 8 c c c f 8 c c . .
+        . . . c c 8 8 f c a f f f c c .
+        . . c c c f f f c a a f f c c c
+        8 c c c f f f f c c a a c 8 c c
+        c c c b f f f 8 a c c a a a c c
+        c a a b b 8 a b c c c c c c c c
+        a f c a a b b a c c c c c f f c
+        a 8 f c a a c c a c a c f f f c
+        c a 8 a a c c c c a a f f f 8 a
+        . a c a a c f f a a b 8 f f c a
+        . . c c b a f f f a b b c c 6 c
+        . . . c b b a f f 6 6 a b 6 c .
+        . . . c c b b b 6 6 a c c c c .
+        . . . . c c a b b c c c . . . .
+        . . . . . c c c c c c . . . . .
+    `, SpriteKind.Rock)
+    Rock_Enemy_1 = sprites.create(img`
+        . . . . . . . . . c c 8 . . . .
+        . . . . . . 8 c c c f 8 c c . .
+        . . . c c 8 8 f c a f f f c c .
+        . . c c c f f f c a a f f c c c
+        8 c c c f f f f c c a a c 8 c c
+        c c c b f f f 8 a c c a a a c c
+        c a a b b 8 a b c c c c c c c c
+        a f c a a b b a c c c c c f f c
+        a 8 f c a a c c a c a c f f f c
+        c a 8 a a c c c c a a f f f 8 a
+        . a c a a c f f a a b 8 f f c a
+        . . c c b a f f f a b b c c 6 c
+        . . . c b b a f f 6 6 a b 6 c .
+        . . . c c b b b 6 6 a c c c c .
+        . . . . c c a b b c c c . . . .
+        . . . . . c c c c c c . . . . .
+    `, SpriteKind.Rock)
+    Rock_Enemyy = sprites.create(img`
+        . . . . . . . . . c c 8 . . . .
+        . . . . . . 8 c c c f 8 c c . .
+        . . . c c 8 8 f c a f f f c c .
+        . . c c c f f f c a a f f c c c
+        8 c c c f f f f c c a a c 8 c c
+        c c c b f f f 8 a c c a a a c c
+        c a a b b 8 a b c c c c c c c c
+        a f c a a b b a c c c c c f f c
+        a 8 f c a a c c a c a c f f f c
+        c a 8 a a c c c c a a f f f 8 a
+        . a c a a c f f a a b 8 f f c a
+        . . c c b a f f f a b b c c 6 c
+        . . . c b b a f f 6 6 a b 6 c .
+        . . . c c b b b 6 6 a c c c c .
+        . . . . c c a b b c c c . . . .
+        . . . . . c c c c c c . . . . .
+    `, SpriteKind.Rock)
+    Rock_Enemy.setPosition(31, 0)
+    Rock_Enemy_1.setPosition(137, 0)
+    Rock_Enemyy.setPosition(200, 0)
+    Rock_Enemy.setVelocity(0, 100)
+    Rock_Enemy_1.setVelocity(0, 70)
+    Rock_Enemyy.setVelocity(0, 94)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile35, function (sprite, location) {
+    tiles.setTilemap(tiles.createTilemap(
+            hex`10001000161616161e1b1c1d1e1616161616161616161716281f2123281616161616161616181616171f2123161616181616161616161616161f2123161616171616161626161716161f212316161616162516162a2222222221212316161625252516162924242424212123161625252525161626161716171f2123171616252518161616161616161f2123171616251716161616171816161f2123161616161716161616161616171f2123161716161617161616161616161f2123161616161617161616161616171f2123161617161816161616161616161f2123161616161617161617161618161f2123161716161618161616161616162924201616161616161616`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,sprites.dungeon.darkGroundNorthWest0,sprites.dungeon.darkGroundNorth,sprites.dungeon.darkGroundNorthEast0,sprites.dungeon.darkGroundEast,sprites.dungeon.darkGroundCenter,sprites.dungeon.darkGroundWest,myTiles.tile1,sprites.dungeon.darkGroundSouthWest0,sprites.dungeon.darkGroundSouthEast0,sprites.dungeon.chestClosed,sprites.dungeon.darkGroundSouth,sprites.dungeon.floorLight0,sprites.dungeon.chestOpen,sprites.dungeon.hazardLava1,sprites.dungeon.collectibleInsignia,myTiles.tile2,myTiles.tile3,sprites.builtin.forestTiles0,sprites.dungeon.hazardLava0,myTiles.tile4,myTiles.tile5,sprites.castle.tileGrass1,sprites.castle.tileGrass3,sprites.castle.tileGrass2,sprites.builtin.forestTiles9,sprites.builtin.forestTiles14,sprites.builtin.forestTiles13,sprites.builtin.forestTiles10,sprites.builtin.forestTiles15,sprites.castle.tileDarkGrass3,sprites.castle.tilePath4,sprites.castle.tilePath9,sprites.castle.tilePath5,sprites.castle.tilePath2,sprites.castle.tilePath6,sprites.castle.tilePath8,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,sprites.castle.tilePath7,sprites.castle.tilePath1,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    music.baDing.play()
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(110, 120)
+    mySprite.say("You selected easy difficulty!", 5000)
+    controller.moveSprite(mySprite, 75, 75)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile13, function (sprite, location) {
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(0, 150)
+    music.baDing.play()
+    mySprite.say("--------------What's in here?", 2000)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010001b1b1b1d0c0c0c0c0c0c0c0c0c0c0c1e1b1b1b1d0c0c0c0c0c0c0c0c0c0c0c1e1b1b1b1d0c0c0c0c0c0c0c0c0c0c0c1e1b1b1b1b1b1b1b1b1b1b1b1b1b1b0c1e1b1b1b1d0c0c0c0c0c0c0c0c0c1b0c1e1b1b1b1d0c0c0c0c0c0c0c0c0c1b0c1e1b1b1b1d1b1b1b1b1b1b1b1b1b1b0c1e1b1b1b1d1b0c0c0c0c0c0c0c0c0c0c0c1b1b1b1d1b1b1b1b1b1b1b1b1b1b1b0c1b1b1b1d0c0c0c0c0c0c0c0c0c0c1b0c1b1b1b1d0c0c0c0c0c0c0c0c0c0c1b0c1b1b1b1d1b1b1b1b1b1b1b1b1b1b1b0c1b1b1b1d1b0c0c0c0c0c0c0c0c0c0c0c1b1b1b1d1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1d0c0c0c0c0c0c0c0c0c0c0c1b1a1b1b1d0c0c0c0c0c0c0c0c0c0c0c20`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,sprites.dungeon.darkGroundCenter,sprites.dungeon.hazardLava0,sprites.builtin.brick,myTiles.tile27,sprites.dungeon.buttonOrange,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile36, function (sprite, location) {
+    tiles.setTilemap(tiles.createTilemap(
+            hex`10001000161616161e1b1c1d1e1616161616161616161716281f2123281616161616161616181616171f2123161616181616161616161616161f2123161616171616161626161716161f212316161616162516162a2222222221212316161625252516162924242424212123161625252525161626161716171f2123171616252518161616161616161f2123171616251716161616171816161f2123161616161716161616161616171f2123161716161617161616161616161f2123161616161617161616161616171f2123161617161816161616161616161f2123161616161617161617161618161f2123161716161618161616161616162924201616161616161616`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,sprites.dungeon.darkGroundNorthWest0,sprites.dungeon.darkGroundNorth,sprites.dungeon.darkGroundNorthEast0,sprites.dungeon.darkGroundEast,sprites.dungeon.darkGroundCenter,sprites.dungeon.darkGroundWest,myTiles.tile1,sprites.dungeon.darkGroundSouthWest0,sprites.dungeon.darkGroundSouthEast0,sprites.dungeon.chestClosed,sprites.dungeon.darkGroundSouth,sprites.dungeon.floorLight0,sprites.dungeon.chestOpen,sprites.dungeon.hazardLava1,sprites.dungeon.collectibleInsignia,myTiles.tile2,myTiles.tile3,sprites.builtin.forestTiles0,sprites.dungeon.hazardLava0,myTiles.tile4,myTiles.tile5,sprites.castle.tileGrass1,sprites.castle.tileGrass3,sprites.castle.tileGrass2,sprites.builtin.forestTiles9,sprites.builtin.forestTiles14,sprites.builtin.forestTiles13,sprites.builtin.forestTiles10,sprites.builtin.forestTiles15,sprites.castle.tileDarkGrass3,sprites.castle.tilePath4,sprites.castle.tilePath9,sprites.castle.tilePath5,sprites.castle.tilePath2,sprites.castle.tilePath6,sprites.castle.tilePath8,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,sprites.castle.tilePath7,sprites.castle.tilePath1,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    music.baDing.play()
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(110, 120)
+    mySprite.say("You selected medium difficulty!", 5000)
+    controller.moveSprite(mySprite, 85, 85)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.tilePath7, function (sprite, location) {
+    mySprite.say("I have a job to do!", 1000)
+    scene.cameraShake(8, 500)
+    music.powerDown.play()
+})
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.setAction(mySprite, ActionKind.leftrun)
+})
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.setAction(mySprite, ActionKind.Walking)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.keyB, function (sprite, otherSprite) {
+    music.jumpUp.play()
+    scene.cameraShake(3, 500)
+    tiles.setWallAt(tiles.getTileLocation(5, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(4, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(3, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(2, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 13), false)
+    tiles.setWallAt(tiles.getTileLocation(1, 13), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 4), false)
+    tiles.setWallAt(tiles.getTileLocation(8, 5), false)
+    tiles.setWallAt(tiles.getTileLocation(8, 9), false)
+    tiles.setWallAt(tiles.getTileLocation(10, 7), false)
+    Bkey.destroy(effects.spray, 500)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile34, function (sprite, location) {
+    music.baDing.play()
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(110, 120)
+    mySprite.say("Choose a difficulty first!", 5000)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Person, function (sprite, otherSprite) {
+    Civilian.say("------We don't know where our princess has gone!", 8000)
+    scene.cameraShake(4, 500)
+    music.jumpUp.play()
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile12, function (sprite, location) {
+    mySprite.setPosition(36, 32)
+    mySprite.say("----(I am not mean enough to make you restart :)!)", 5000)
+    scene.cameraShake(8, 500)
+    music.magicWand.play()
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile5, function (sprite, location) {
+    mySprite.setPosition(160, 120)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010000d0d0d0d0d0d0d0d0d120d0d0d0d0d0d0d0d090d0d0e0e121212120e0d0d0d0d0d0d0d0e0e0d121212120d0d0d0d0d0d0d0d0e0d0d0d0d120d120d0d0d0e0d0d0d0d0e0d0d0d0d0d0d0d0d0e090d0d0d130d0d0d0d0d0d0d0d0d0d0d0d0d0d0d18101010101010101010101010101028170f0f0f0f0f0f0f0f0f0f0f0f0f0f27130d0d0d0d0d0d0d0d0d0d0d15261c1c0d0d0e0e0e0d0d0d0d0d0d0d1d221f1a0d0e0d0d090e0e0e0d0d0d0e1d2325190d0d0d0d0d0d0d0d0e0d0d091e21201b0d0d0e0d0d0d0e0d090e0e0d1d261c1c0d0d0d0d0d0d0d0d0d0d0d0d151d1e1d0d0d0d090e0d0e0d0d0d0d0d0d090d0d0d0d0e0d0d0d0d0e0d0d0d0d0e0d0d0d`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,sprites.dungeon.darkGroundCenter,sprites.dungeon.collectibleInsignia,sprites.builtin.brick,sprites.dungeon.hazardLava1,myTiles.tile4,sprites.castle.tileGrass2,sprites.dungeon.floorLight0,sprites.castle.rock2,sprites.castle.tilePath5,sprites.castle.tileGrass3,sprites.castle.tileGrass1,sprites.castle.tilePath8,sprites.castle.tilePath2,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,sprites.castle.tilePath7,sprites.castle.tilePath1,sprites.builtin.forestTiles11,sprites.builtin.forestTiles7,sprites.builtin.forestTiles15,sprites.builtin.forestTiles28,sprites.castle.tileDarkGrass3,sprites.castle.tileDarkGrass1,sprites.builtin.forestTiles6,sprites.builtin.forestTiles14,sprites.builtin.forestTiles13,sprites.builtin.forestTiles5,sprites.builtin.forestTiles9,sprites.builtin.forestTiles10,myTiles.tile11,sprites.builtin.forestTiles29,sprites.castle.tilePath9,sprites.castle.tilePath3,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    scene.cameraShake(8, 500)
+    mySprite.say("I must look for more treasure!", 5000)
+    music.powerUp.play()
+    Princess2 = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 5 5 5 5 5 . . . . . .
+        . . . . . 5 3 3 3 5 . . . . . .
+        . . . . 5 5 f 3 f 5 5 . . . . .
+        . . . . . . 3 3 3 . . . . . . .
+        . . . . . f f f f f . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.Saved)
+    Princess2.setPosition(40, 80)
+    animation.runImageAnimation(
+    Princess2,
+    [img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 5 5 5 5 5 . . . . . .
+        . . . . . 5 3 3 3 5 . . . . . .
+        . . . . 5 5 f 3 f 5 5 . . . . .
+        . . . . . . 3 3 3 . . . . . . .
+        . . . . . f f f f f . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+  `,img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 5 . 5 5 5 5 5 . 5 . . . .
+        . . . . 5 5 f 3 f 5 5 . . . . .
+        . . . . . . f 3 f . . . . . . .
+        . . . . f . 3 3 3 . f . . . . .
+        . . . . . f f f f f . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . f . f . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `],
+    350,
+    true
+    )
+    Princess2.say("-----Thank you for saving me!", 500000000)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite, location) {
+    mySprite.say("Why am I in water?", 1000)
+    scene.cameraShake(8, 500)
+    music.powerDown.play()
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile39, function (sprite, location) {
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(200, 61)
+    music.powerDown.play()
+    mySprite.say("Nice!", 2000)
+    info.changeLifeBy(-1)
+    boss.setPosition(8, 195)
+    boss2.setPosition(8, 200)
+    boss3.setPosition(8, 190)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestOpen, function (sprite, location) {
+    scene.cameraShake(8, 500)
+    mySprite.say("This chest is empty!", 2000)
+    music.magicWand.play()
+})
+controller.left.onEvent(ControllerButtonEvent.Released, function () {
+    animation.setAction(mySprite, ActionKind.leftidle)
+})
+controller.down.onEvent(ControllerButtonEvent.Released, function () {
+    animation.setAction(mySprite, ActionKind.Idle)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location) {
+    mySprite.say("---------Quick you must make a decision save the princess or take the treasure!", 10000)
+    info.startCountdown(15)
+    music.baDing.play()
+    scene.cameraShake(8, 500)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile17, function (sprite, location) {
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010001d1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1c1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,sprites.dungeon.darkGroundCenter,sprites.dungeon.chestClosed,sprites.dungeon.collectibleRedCrystal,myTiles.tile26,sprites.dungeon.hazardLava1,sprites.dungeon.darkGroundSouthWest0,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    scene.cameraShake(4, 500)
+    mySprite.say("Cool!", 2000)
+    mySprite.setPosition(72, 10)
+    music.baDing.play()
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile26, function (sprite, location) {
+    scene.cameraShake(4, 500)
+    music.baDing.play()
+    mySprite.say("The exit is blocked...", 2000)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.keyG, function (sprite, otherSprite) {
+    music.jumpUp.play()
+    scene.cameraShake(3, 500)
+    tiles.setWallAt(tiles.getTileLocation(5, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(4, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(3, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(2, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(1, 13), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 13), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 4), false)
+    tiles.setWallAt(tiles.getTileLocation(1, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(8, 5), false)
+    tiles.setWallAt(tiles.getTileLocation(8, 9), false)
+    tiles.setWallAt(tiles.getTileLocation(10, 7), false)
+    Gkey.destroy(effects.spray, 500)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile33, function (sprite, location) {
+    Enemy_nottt_dead.follow(mySprite, 60)
+    ENemy2.follow(mySprite, 40)
+    ENemy3.follow(mySprite, 80)
+})
+scene.onOverlapTile(SpriteKind.Rock, sprites.dungeon.darkGroundSouth, function (sprite, location) {
+    Rock_Enemy.setPosition(31, 0)
+    Rock_Enemy_1.setPosition(137, 0)
+    Rock_Enemyy.setPosition(200, 0)
+    Rock_Enemy.setVelocity(0, 100)
+    Rock_Enemy_1.setVelocity(0, 70)
+    Rock_Enemyy.setVelocity(0, 94)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile28, function (sprite, location) {
+    tiles.setTilemap(tiles.createTilemap(
+            hex`10001000280413150619191919191919191919190404040404040404040404040404041b040404040619191904191906040619190404040406171819041918060406060606060606060a171904190a060404271c170a170a0a1719190419190606060606060606060606040404041906060606062123242526270504040404040404261d06060606060604040404190606060606170a0a0a0a171919041919170a0a0a0a0a170a170a0a18190419180a0a0a170a0a0a170a0a170a1904190a0a0a170a0a060606060606061904190606060606062024040404040404040404040404251e060606060606061904190606060606060a170a0a171718191f19180a170a0a0a`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,sprites.dungeon.darkGroundCenter,sprites.dungeon.collectibleInsignia,sprites.builtin.brick,sprites.dungeon.hazardLava1,myTiles.tile4,sprites.castle.tileGrass2,sprites.dungeon.floorLight0,sprites.castle.rock2,sprites.castle.tilePath5,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,sprites.dungeon.stairLarge,sprites.dungeon.stairSouth,sprites.dungeon.hazardHole,myTiles.tile11,sprites.dungeon.floorLight1,sprites.dungeon.doorLockedSouth,sprites.dungeon.hazardLava0,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    Ykey = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . 5 5 5 . . . .
+        . . . . 5 5 5 5 5 . . . 5 . . .
+        . . . . . 5 . 5 . 5 5 5 . . . .
+        . . . . . 5 . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.keyY)
+    Ykey.setPosition(123, 110)
+    mySprite.setPosition(147, 110)
+    mySprite.say("I got the yellow key! (You can now walk through the yellow area after you collect the key)", 13000)
+    scene.cameraShake(8, 500)
+    music.magicWand.play()
+    tiles.setWallAt(tiles.getTileLocation(8, 5), true)
+    tiles.setWallAt(tiles.getTileLocation(8, 9), true)
+    tiles.setWallAt(tiles.getTileLocation(10, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(14, 4), true)
+    tiles.setWallAt(tiles.getTileLocation(14, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(14, 13), true)
+    tiles.setWallAt(tiles.getTileLocation(1, 13), true)
+    tiles.setWallAt(tiles.getTileLocation(1, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(2, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(3, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(4, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(5, 7), true)
+    controller.moveSprite(mySprite, 100, 100)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.tilePath9, function (sprite, location) {
+    mySprite.say("I have a job to do!", 1000)
+    scene.cameraShake(8, 500)
+    music.powerDown.play()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.keyR, function (sprite, otherSprite) {
+    music.jumpUp.play()
+    scene.cameraShake(3, 500)
+    tiles.setWallAt(tiles.getTileLocation(4, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(5, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(3, 7), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 13), false)
+    tiles.setWallAt(tiles.getTileLocation(14, 4), false)
+    tiles.setWallAt(tiles.getTileLocation(8, 5), false)
+    tiles.setWallAt(tiles.getTileLocation(8, 9), false)
+    tiles.setWallAt(tiles.getTileLocation(10, 7), false)
+    Rkey.destroy(effects.spray, 500)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.rock1, function (sprite, location) {
+    mySprite.setPosition(0, 0)
+    music.powerDown.play()
+    scene.cameraShake(8, 500)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    game.over(false, effects.melt)
+    music.powerDown.play()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Save, function (sprite, otherSprite) {
+    Princess.setPosition(158, 120)
+    Princess.destroy(effects.disintegrate, 0)
+    mySprite.setPosition(36, 32)
+    mySprite.say("----I saved the princess! Though I still haven't managed to obtain any treasure, there better be some here!", 10000)
+    music.jumpDown.play()
+    scene.cameraShake(8, 500)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010000d0413150619191919191919191919190404040404040404040404040404041b040404040619191904191906040619190404040406171819041918060406060606060606060a171904190a060404271c170a170a0a1719190419190606060606060606060606040404041906060606062123242526270504040404040404261d06060606060604040404190606060606170a0a0a0a171919041919170a0a0a0a0a170a170a0a18190419180a0a0a170a0a0a170a0a170a1904190a0a0a170a0a060606060606061904190606060606062024040404040404040404040404251e060606060606061904190606060606060a170a0a171718191f19180a170a0a0a`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,sprites.dungeon.darkGroundCenter,sprites.dungeon.collectibleInsignia,sprites.builtin.brick,sprites.dungeon.hazardLava1,myTiles.tile4,sprites.castle.tileGrass2,sprites.dungeon.floorLight0,sprites.castle.rock2,sprites.castle.tilePath5,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,sprites.dungeon.stairLarge,sprites.dungeon.stairSouth,sprites.dungeon.hazardHole,myTiles.tile11,sprites.dungeon.floorLight1,sprites.dungeon.doorLockedSouth,sprites.dungeon.hazardLava0,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+    tiles.setWallAt(tiles.getTileLocation(14, 4), true)
+    tiles.setWallAt(tiles.getTileLocation(14, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(14, 13), true)
+    tiles.setWallAt(tiles.getTileLocation(1, 13), true)
+    tiles.setWallAt(tiles.getTileLocation(1, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(2, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(3, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(4, 7), true)
+    tiles.setWallAt(tiles.getTileLocation(5, 7), true)
+    info.stopCountdown()
+})
+scene.onHitWall(SpriteKind.Enemy, function (sprite) {
+    music.baDing.play()
+    scene.cameraShake(8, 500)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010001d1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1e1e1e1e1e1e1e1a1a1a1a1a1a1a1a1a1e1a1a1a1a1a1e1a1a1a1a1a1a1a1a1a1e1a1a1a1a1a1e1a1a1a1a1a1a1a1a1a1e1a1a1a1a1a1e1a1a1a1a1a1a1a1a1a1e1a1a1a1a1a1e1a1a1a1a1a1a1a1a1a1e1a1a1a1a1a1e1a1a1a1a1a1a1a1a1a1e1e1e1e1e1e1e1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,sprites.dungeon.darkGroundCenter,sprites.dungeon.chestClosed,sprites.dungeon.collectibleRedCrystal,myTiles.tile26,sprites.dungeon.hazardLava1,sprites.dungeon.darkGroundSouthWest0,sprites.castle.rock0,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
+    mySprite.setPosition(147, 110)
+    mySprite.say("----(I am not mean enough to make you restart :)!)", 5000)
+    scene.cameraShake(8, 500)
+    music.magicWand.play()
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile14, function (sprite, location) {
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(0, 0)
+    music.baDing.play()
+    mySprite.say("--------------What's in here?", 2000)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010001b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1a1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b25252525251b1b1b1b1b1b1b1b1b1b1b251b1b1b251b1b1b1b1b1b1b1b1b1b1b251b241b251b1b1b1b1b1b1b1b1b1b1b251b1b1b251b1b1b1b1b1b1b1b1b1b1b25142525251b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b2b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19,myTiles.tile20,myTiles.tile21,myTiles.tile22,myTiles.tile23,myTiles.tile24,myTiles.tile25,myTiles.tile26,sprites.dungeon.darkGroundCenter,sprites.dungeon.hazardLava0,sprites.builtin.brick,myTiles.tile27,sprites.dungeon.buttonOrange,myTiles.tile28,myTiles.tile29,myTiles.tile30,myTiles.tile31,myTiles.tile32,sprites.dungeon.hazardLava1,myTiles.tile33,myTiles.tile34,myTiles.tile35,myTiles.tile36,myTiles.tile37,myTiles.tile38,myTiles.tile39,myTiles.tile40,myTiles.tile41],
+            TileScale.Sixteen
+        ))
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    game.over(false, effects.melt)
+    music.pewPew.play()
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.setAction(mySprite, ActionKind.rightrun)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile16, function (sprite, location) {
+    scene.cameraShake(4, 500)
+    mySprite.setPosition(0, 0)
+    music.baDing.play()
+    mySprite.say("--------------What's in here?", 2000)
+    tiles.setTilemap(tiles.createTilemap(
+            hex`100010001b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1a1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b252525252525252525252525252525251b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1d1d1b1b1b1b1b1d1b1b1b1b1b1b1b1b1b1b1d1d1d1d1d1d1b1b1b1b1b1b1b1b211b1b1b1b1b1b1b1b1d1b1b1b1b1b1b`,
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . .
+...
