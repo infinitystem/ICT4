@@ -1,0 +1,25 @@
+'''
+TASK 1
+Use all the knowledge gained in this session to write a simple program that contains the following:
+1. Comments
+2. Text output
+3. two or more strings
+4. two or more variables
+'''
+
+print("Hello class, I hope you are having a great day. What is your name?") # Block 1 - here I salute the visitor
+name=input() # Block 2, here I tell python that I want to create a variable that will store an input entered by the user
+
+print("Hi " + name + " !!!!. I am happy to see you here!") # Block 3 - here I salute the visitor using his/her name stored in that variable
+
+print("Did you know that I can do simple maths?..... my creator taught me how to maths like x*y."
+      "\nPlease insert a number for x....") # Block 4 - here I tell the visitor that I can do maths and ask for a number for X
+
+x= input() # Block 5 - here tell Python that I want to create a variable called x and that x is equal to an user input
+
+print("Now, insert a number for the y variable please :)") # Block 6 - here I tell the visitor that I can do maths and ask for a number for y
+y= input() # Block 7 - here tell Python that I want to create a variable called y and that y is equal to an user input
+
+product = x * y # Block 8 creates a variable that multiplies variables X and Y
+
+print("My neural network has calculated that the product of X and Y is equal to:" + str(product)) # Block 9 spits the result of the multiplication
