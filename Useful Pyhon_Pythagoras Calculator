@@ -1,4 +1,4 @@
-# Pythagoras formula calculator
+# Pythagoras formula calculator 
 
 from math import sqrt # import everything from the mathematics library
 import time
