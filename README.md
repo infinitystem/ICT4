@@ -1,17 +1,34 @@
-**Software-development-SEM1**
+# Welcome to Software Development and Robotics 2020
 
-**Owen Quilty** is the main maintainer of this repo. Respect the man!
+Hi everyone, 
 
-**Assessment 1: Instructions for submission**
+My name is Paulo da Silva and I will be your Educator in this course. I am excited with the prospect of learning from you and with you during this semester as we explore how programming can positevily impact our lives! 
 
-Important, please send JavaScript code **ONLY** to Owen Quilty on QUI0012@willihigh.vic.edu.au.
+This course has been developed for the **beginner programmer**, so do not hesitate to seek assistance when needed. Also, I am very keen to hear from **students that already have some experience with coding in any language**. This GitHub page is the "go to" place where you can find important information about this course and see the works of some of your mates.
 
-**Instructions** :
 
-**1.** Email subject: JavaScript\_YOURNAME SURNAME\_CLASS (ICT2 or ICT4) - for example: JavaScript\_Paulo da Silva\_ICT4
+## 1. Lesson structure
 
-**2.** Copy your JavaScript code and paste into the email (text only)
+## Term 1 - Introduction to Python programming
 
-**3.** Send the email to [**QUI0012@willihigh.vic.edu.au**](mailto:QUI0012@willihigh.vic.edu.au)
+The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
 
-**4.** Submit your game description file via GOOGLE CLASSROOM and click &quot;HAND IN&quot;
+#### FAQ (frequently asked questions)
+
+**1. I have not experience in programming, will I struggle in this course?**
+
+
+**2. Which software are we using?**
+
+Good question. We should be using **PyCharm Community Edition** during Term 1 since it is a very robust, industry-based and open source tool.
+
+![alt text](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.2pw0zQjV3btNQ2l6UB_qKgAAAA%26pid%3DApi&f=1 "PyCharm")
+
+
+PyCharm is an IDE for Python developed by JetBrains. PyCharm is built for professional Python developers, and comes with many features to deal with large code bases: code navigation, automatic refactoring, and other productivity tools, in a single unified interface.
+
+**[Download here](https://www.jetbrains.com/pycharm/download/#section=windows)**
+
+**3. What will be able to do by the end of Term 1?**
+
+Yet another good question! By the end of Term 1, all students should be able to create a ChatBot software as a project. Some of you will use the skills gained in this course to create very useful and well-designed software solutions to solve a *real-world problem*. More on that in class **:)**
