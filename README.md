@@ -9,7 +9,7 @@ This course has been developed for the **beginner programmer**, so do not hesita
 
 ## 1. Lesson structure
 
-### Term 1 - Introduction to Python programming
+## Term 1 - Introduction to Python programming
 
 > In this course, you'll learn the fundamentals of the Python programming language, along with programming best practices. You’ll learn to represent and store data using Python data types and variables, and use conditionals and loops to control the flow of your programs.  Lastly, you’ll learn to find and use modules in the Python Standard Library and other third-party libraries.
 
@@ -17,16 +17,29 @@ This course has been developed for the **beginner programmer**, so do not hesita
 
 **1. I have not experience in programming, will I struggle in this course?**
 
+> No worries!
+> 
+> Think about this.... the vast majority of people have limited to no experience in programming, so you are not alone. The main reason I love programming is because the programming community is a very welcoming one. 
+> 
+> Programming is challenging at times, however, you should have in mind that we will create a safe environment for you to fail your way through sucess!
+<br>
 
 **2. Which software are we using?**
 
 > Good question. We should be using **PyCharm Community Edition** during Term 1 since it is a very robust, industry-based and open source tool.
 
-![alt text](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.2pw0zQjV3btNQ2l6UB_qKgAAAA%26pid%3DApi&f=1 "PyCharm")
 > PyCharm is an IDE for Python developed by JetBrains. PyCharm is built for professional Python developers, and comes with many features to deal with large code bases: code navigation, automatic refactoring, and other productivity tools, in a single unified interface.
 
 **[Download here](https://www.jetbrains.com/pycharm/download/#section=windows)**
+<br>
+
+![alt text](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.2pw0zQjV3btNQ2l6UB_qKgAAAA%26pid%3DApi&f=1 "PyCharm")
 
 **3. What will be able to do by the end of Term 1?**
 
 > Yet another good question! By the end of Term 1, all students should be able to create a ChatBot software as a project. Some of you will use the skills gained in this course to create very useful and well-designed software solutions to solve a *real-world problem*. More on that in class **:)**
+
+
+## Term 2 - Introduction to Lego EV3
+
+One thing at the time, more info at the start of Term 2!
