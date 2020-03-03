@@ -12,11 +12,11 @@ This course has been developed for the **beginner programmer**, so do not hesita
 ## Term 1 - Introduction to Python programming
 
 > In this course, you'll learn the fundamentals of the Python programming language, along with programming best practices. You’ll learn to represent and store data using Python data types and variables, and use conditionals and loops to control the flow of your programs.  Lastly, you’ll learn to find and use modules in the Python Standard Library and other third-party libraries.
-
+<p>
 
 ![alt text](https://cdn.shopify.com/s/files/1/0185/1576/files/NavImageAssets-More-FAQ.png?v=1506554211 "FAQ")
 
-<br><br>
+<br>
 
 **1. I have not experience in programming, will I struggle in this course?**
 
