@@ -30,8 +30,8 @@ This course has been developed for the **beginner programmer**, so do not hesita
 > Good question. We should be using **PyCharm Community Edition** during Term 1 since it is a very robust, industry-based and open source tool.
 >
 > PyCharm is an IDE for Python developed by JetBrains. PyCharm is built for professional Python developers, and comes with many features to deal with large code bases: code navigation, automatic refactoring, and other productivity tools, in a single unified interface.
-
-**[Download here](https://www.jetbrains.com/pycharm/download/#section=windows)**
+>
+>**[Download here](https://www.jetbrains.com/pycharm/download/#section=windows)**
 <br>
 
 ![alt text](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.2pw0zQjV3btNQ2l6UB_qKgAAAA%26pid%3DApi&f=1 "PyCharm")
