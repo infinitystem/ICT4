@@ -1,0 +1,26 @@
+# This program will be used to calculate how much time you spend on a subject at school using simple mathematics.
+
+# Addressing friend
+
+name = input("Hello friend, what is your name")
+print("Hi " + name + ", it's nice to meet you. My name is Nikhil Gaba.")
+
+# Ask friend to name a subject
+
+subject =  input("Name a subject:")
+
+# Tell friend that he is going to know how long he does that subject for in a week
+
+print ("I will tell you how much time you spend on " + subject + " per week." )
+
+# Ask friend how many periods he does this subject for in a weekand how long is one period for in minutes
+
+periods = int(input("How many periods do you have "+ subject + " for in a week?"))
+time = int(input("How much time in minutes does a period go for?"))
+
+# give friend answer in minutes
+
+def multiply(periods, time):
+    return periods*time
+
+print(name,",you spend ",multiply(periods,time)," minutes on ",subject,"in a week.")
