@@ -1,0 +1,62 @@
+import random
+
+# Static (fixed) variables are defined. ⬇️
+RandomListOfAnimals = ["cat","dog","wolf","giraffe","fish", "hippo"]
+RandomListOfFalseResponses = ["Nope! Keep guessing!","Hmmm... Not quite right...","No, but you're getting closer!"]
+RandomListOfResponses = ["Wow! That sounds interesting!", "Ok", "That seems pretty cool! I like it!", "Mmmmm... Not really...", "Yeah", "Of course!"]
+tries = 1
+
+# The variable, 'animals' randomly chooses 1 animal from the, 'RandomListOfAnimals' list. ⬇️
+animal = random.choice(RandomListOfAnimals)
+
+# The user provides their name to make the game more personal. ⬇️
+username = input('hey! whats your name?')
+print ("hello", username, '.')
+
+# The program asks a question to the user, which determines whether or not the code will run. ⬇️
+question = input("want to play a guessing game? (Yes/No)")
+
+# The program will continue even if the user adds a space to the answer. No matter how many spaces there are, the program will still work. ⬇️
+question = question.strip()
+
+# The program will continue even if the user adds a capital or lowercase letter to the answer (for the words 'yes' and 'no'). ⬇️
+# This is what happens if the player says, 'yes' and wants to play the game. ⬇
+if question.lower() in ['y', 'yes']:
+
+# The animals in the 'RandomListOfAnimals' list are said in the string literal. When the 'RandomListOfAnimals' list is changed (animals are added/removed, etc.), the string literal will update. ⬇️
+    print(f"I am thinking of one of these animals: {', '.join([item for item in RandomListOfAnimals[:-1]])} and {RandomListOfAnimals[-1]}")
+
+# The user responds to the prompt "have a guess at which animal I'm thinking of!" ⬇️
+    guess = input("have a guess at which animal I'm thinking of!")
+
+# The program will understand the user's response, even if capital letters and spaces are used. ⬇️
+    guess = guess.strip()
+    guess = guess.lower()
+
+# This is what happens when the user guesses the wrong animal. ⬇️
+    while guess != animal:
+        # The variable, 'notright' randomly chooses 1 response from the 'RandomListOfFalseResponses' list. The chosen response is then printed. This makes the game seem less repetitive. ⬇
+            notright = random.choice(RandomListOfFalseResponses)
+            print(notright)
+        # The variable 'tries' updates by 1 on every guess the player takes. ⬇️
+            tries += 1
+        # The response to a wrong guess. ⬇️
+            guess = input("try again!")
+        # The program will understand the user's response, even if capital letters and spaces are used. ⬇
+            guess = guess.strip()
+            guess = guess.lower()
+    # This is what happens when the user guesses the right animal. ⬇
+    else:
+        # If it takes 1 try for the user to guess the animal, the dialogue will appear as, 'try' instead of, 'tries' for correct English syntax. ⬇
+            if tries==1: TryOrTries = "try"
+            else : TryOrTries = "tries"
+        # The end dialogue, which appears when the user guesses the correct animal. ⬇
+            print("You guessed it",username, "! Congratulations! The animal was", animal, "and it only took you", tries, TryOrTries)
+# This is what happens if the player says, 'no' and doesn't want to play the game. ⬇
+elif question.lower() in ['n', 'no']:
+        userresponse = input('thats okay... is there anything else you would like to talk about? Tell me something new!')
+        # This ensures that the program runs forever ⬇
+        while True:
+            # The program will pick a response from the 'RandomListOfResponses' list, to everything the user types ⬇
+            answer = random.choice(RandomListOfResponses)
+            response = input(answer)
